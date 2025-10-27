@@ -1,0 +1,103 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DownloadHub — Tempat Download</title>
+  <meta property="og:type" content="website" />  <style>
+    :root{--bg:#f7f8fb;--card:#fff;--text:#111;--muted:#556;--accent:#2563eb}
+    [data-theme="dark"]{--bg:#0b1220;--card:#071122;--text:#e6eef8;--muted:#9fb0cf;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.45}
+    .container{max-width:960px;margin:24px auto;padding:16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    h1{font-size:1.25rem;margin:0}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    /* Card */
+    .card{background:var(--card);border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+    .download-grid{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}
+    .thumb{width:120px;height:120px;border-radius:8px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:600}
+    .meta{display:flex;gap:12px;flex-wrap:wrap}
+    .meta .badge{background:rgba(0,0,0,0.06);padding:6px 10px;border-radius:999px;font-size:0.85rem}
+
+    .buttons{display:flex;gap:12px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+
+    .info{margin-top:12px;color:var(--muted)}
+    .section-title{font-weight:700;margin-top:18px}
+    pre{background:rgba(0,0,0,0.03);padding:12px;border-radius:8px;overflow:auto}
+
+    footer{margin-top:28px;padding:12px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+    /* responsive */
+    @media (max-width:640px){.download-grid{grid-template-columns:1fr;}.thumb{width:100%;height:200px}}
+
+    .small{font-size:0.9rem}
+    .muted{color:var(--muted)}
+    .mirror-list{display:flex;gap:8px;flex-wrap:wrap}
+  </style></head>
+<body>
+  <div class="container" id="page">
+    
+<section class="card" id="download-card">
+  <div class="download-grid">
+    <div>
+      <h2 id="file-title">Nama File</h2>
+      <div class="meta" style="margin-top:8px">
+        <div class="badge">Ukuran: 45 MB</div>
+        <div class="badge">Platform: Android</div>
+      </div>
+
+      <p class="info small">Deskripsi singkat file. Jelaskan fungsi singkat, kompatibilitas, dan catatan penting (mis. izin Android atau persyaratan sistem).</p>
+
+      <div class="buttons">
+        <!-- main download button -->
+        <a id="primaryDownload" class="btn btn-primary" href="#" role="button">Download</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="margin-top:14px">
+  
+    <div class="section-title">Cara Download</div>
+    <ol>
+      <li>Download file dari tombol di atas.</li>
+      <li>Pastikan izinkan instalasi dari sumber tidak dikenal (Android) jika perlu.</li>
+      <li>Buka file dan ikuti instruksi.</li>
+    </ol>
+
+</section>
+
+<!-- END download card -->
+
+<footer>
+  © <span id="year"></span> Zona Download ❤️
+</footer>
+
+  </div>  <script>
+    // theme toggle
+    const toggle = document.getElementById('toggleTheme');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved==='dark') document.documentElement.setAttribute('data-theme','dark');
+    toggle.addEventListener('click',()=>{
+      const now = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', now);
+      localStorage.setItem('theme', now);
+    });
+
+    // fill year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Example: set real download links (edit these after upload)
+    // document.getElementById('primaryDownload').href = 'https://drive.google.com/uc?export=download&id=FILEID';
+    // document.getElementById('mirror1').href = 'https://www.mediafire.com/...';
+    // document.getElementById('mirror2').href = 'https://github.com/USERNAME/REPO/releases/download/v1.0.0/app.apk';
+  </script></body>
+</html>
